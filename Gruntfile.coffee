@@ -7,6 +7,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-express'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-clean'
@@ -49,6 +50,17 @@ module.exports = (grunt) ->
           }
         ]
 
+    sass:
+      development:
+        files: [
+          expand: true
+          cwd: "#{DEV_PATH}/styles"
+          src: ['*.sass']
+          dest: "#{PRODUCTION_PATH}/styles"
+          ext: ".css"
+        ]
+
+
     coffee:
       development:
         options:
@@ -62,12 +74,15 @@ module.exports = (grunt) ->
         ]
 
     watch:
-     coffee:
-       files: ["#{DEV_PATH}/coffee/*.coffee", "#{DEV_PATH}/coffee/*/*.coffee","#{DEV_PATH}/coffee/*/*/*.coffee"]
-       tasks: 'coffee:development'
-     jade:
-       files: ["#{DEV_PATH}/index.jade", "#{DEV_PATH}/partials/*.jade", "#{DEV_PATH}/partials/**/*.jade"]
-       tasks: ['jade:development', 'clientTemplates']
+      coffee:
+        files: ["#{DEV_PATH}/coffee/*.coffee", "#{DEV_PATH}/coffee/*/*.coffee","#{DEV_PATH}/coffee/*/*/*.coffee"]
+        tasks: 'coffee:development'
+      sass:
+        files: ["{DEV_PATH}/styles/*.sass", "#{DEV_PATH}/styles/**/*.sass"]
+        tasks: 'sass:development'
+      jade:
+        files: ["#{DEV_PATH}/index.jade", "#{DEV_PATH}/partials/*.jade", "#{DEV_PATH}/partials/**/*.jade"]
+        tasks: ['jade:development', 'clientTemplates']
 
   grunt.registerTask 'clientTemplates', 'Compile and concatenate Jade templates for client.', ->
     templates = {}
@@ -93,6 +108,7 @@ module.exports = (grunt) ->
     'clean:development'
     'copy:development'
     'coffee:development'
+    'sass:development'
     'jade:development'
     'clientTemplates'
   ]
