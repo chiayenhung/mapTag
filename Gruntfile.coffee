@@ -85,10 +85,8 @@ module.exports = (grunt) ->
         tasks: ['jade:development', 'clientTemplates']
 
   grunt.registerTask 'clientTemplates', 'Compile and concatenate Jade templates for client.', ->
-    templates = {}
-
-    if not templates.length
-      return
+    templates = 
+      'text': "#{DEV_PATH}/partials/text.jade"
 
     tmplFileContents = "define(['jade'], function(jade) {\n"
     tmplFileContents += 'var JST = {};\n'
