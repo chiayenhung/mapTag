@@ -10,7 +10,7 @@ mongoose.connect 'mongodb://localhost/mapTag'
 app.configure ->
   app.use express.compress()
   app.set 'title', "Map Tag"
-  app.set 'views', "#{__dirname}/templates"
+  app.set 'views', "#{__dirname}/pages"
   app.set 'view engine', 'jade'
   app.use express.bodyParser()
   app.use express.static("#{__dirname}/../dist/")
