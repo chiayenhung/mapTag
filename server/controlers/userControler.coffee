@@ -3,6 +3,9 @@ User = require '../models/user'
 userControler = {}
 
 userControler.signup = (req, res) ->
+  res.render 'signup'
+
+userControler.createUser = (req, res) ->
   console.log req.body
   user = new User
     username: req.body.username
