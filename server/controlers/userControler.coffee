@@ -12,10 +12,10 @@ userControler.singin = (req, res) ->
     User.findOne {username: username, password: password}, (err, user) ->
       if err
         res.send 500, err
-      else if user.length == 0
+      else if !user
         res.render 'signin'
       else
-        res.render ""
+        res.redirect "/"
 
 userControler.signup = (req, res) ->
   res.render 'signup'
@@ -29,6 +29,6 @@ userControler.createUser = (req, res) ->
     if err
       res.send 500, err
     else
-      res.render ""
+      res.redirect "/"
 
 module.exports = userControler
