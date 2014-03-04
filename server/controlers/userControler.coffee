@@ -6,13 +6,21 @@ userControler.showSignin = (req, res) ->
   res.render 'signin'
 
 userControler.singin = (req, res) ->
-  
+  username = req.body.username
+  password = req.body.password
+  if username and password
+    User.findOne {username: username, password: password}, (err, user) ->
+      if err
+        res.send 500, err
+      else if user.length == 0
+        res.render 'signin'
+      else
+        res.render ""
 
 userControler.signup = (req, res) ->
   res.render 'signup'
 
 userControler.createUser = (req, res) ->
-  console.log req.body
   user = new User
     username: req.body.username
     name: req.body.name
@@ -21,6 +29,6 @@ userControler.createUser = (req, res) ->
     if err
       res.send 500, err
     else
-      res.send @
+      res.render ""
 
 module.exports = userControler
