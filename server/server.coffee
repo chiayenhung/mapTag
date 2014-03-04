@@ -15,6 +15,8 @@ app.configure ->
   app.use express.bodyParser()
   app.use express.static("#{__dirname}/../dist/")
 
+  app.get '/signin', userControler.showSignin
+  app.post '/signin', userControler.singin
   app.get '/signup', userControler.signup
   app.post '/signup', userControler.createUser
 

@@ -9,10 +9,15 @@ html
   body
     nav.navbar.navbar-default(role="navigation")
       h2.header Let's Tag
-    section
-        .row
-            .box
-                        
+    form.signup_form(method='POST', action='/signin')
+      .input-group
+          span.input-group-addon.form-addon username
+          input.form-control(name='username', required)
+      .input-group
+          span.input-group-addon.form-addon password
+          input.form-control(type='password', name='password', required)
+      input.btn(type='submit')
+      a.signup-anchor(href='/signup') signup
 
     script(src='lib/jquery-1.11.0.min.js')
     script(src='js/main.js')

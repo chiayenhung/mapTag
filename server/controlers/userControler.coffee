@@ -2,6 +2,12 @@ User = require '../models/user'
 
 userControler = {}
 
+userControler.showSignin = (req, res) ->
+  res.render 'signin'
+
+userControler.singin = (req, res) ->
+  
+
 userControler.signup = (req, res) ->
   res.render 'signup'
 

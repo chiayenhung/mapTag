@@ -8,15 +8,17 @@ html
     script(src='lib/angular.min.js')
   body
     nav.navbar.navbar-default(role="navigation")
-    form(class='signup_form')
+        h2.header Let's Tag
+    form.signup_form(method='POST', action='/signup')
         .input-group
-            span.input-group-addon username
-            input.form-control
+            span.input-group-addon.form-addon username
+            input.form-control(name='username', required)
         .input-group
-            span.input-group-addon password
-            input.form-control
+            span.input-group-addon.form-addon password
+            input.form-control(type='password', name='password', required)
         .input-group
-            span.input-group-addon name
-            input.form-control
+            span.input-group-addon.form-addon name
+            input.form-control(name='name', required)
+        input.btn(type='submit')
     script(src='lib/jquery-1.11.0.min.js')
     script(src='js/main.js')
