@@ -12,8 +12,8 @@ app.configure ->
   app.set 'title', "Map Tag"
   app.set 'views', "#{__dirname}/pages"
   app.set 'view engine', 'jade'
-  app.set express.cookieParser()
-  app.use express.session()
+  app.use express.cookieParser()
+  app.use express.session(secret: '1234567890QWERTY')
   app.use express.bodyParser()
   app.use express.static("#{__dirname}/../dist/")
 
