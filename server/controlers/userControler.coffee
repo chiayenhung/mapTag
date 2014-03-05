@@ -3,6 +3,9 @@ User = require '../models/user'
 userControler = {}
 
 userControler.showSignin = (req, res) ->
+  if req.session.auth
+    res.redirect '/'
+    return
   res.render 'signin'
 
 userControler.singin = (req, res) ->
@@ -15,6 +18,7 @@ userControler.singin = (req, res) ->
       else if !user
         res.render 'signin'
       else
+        req.session.auth = true
         res.redirect "/"
 
 userControler.signup = (req, res) ->
