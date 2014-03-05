@@ -13,6 +13,7 @@ app.configure ->
   app.set 'views', "#{__dirname}/pages"
   app.set 'view engine', 'jade'
   app.set express.cookieParser()
+  app.use express.session()
   app.use express.bodyParser()
   app.use express.static("#{__dirname}/../dist/")
 
