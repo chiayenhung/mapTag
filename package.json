@@ -27,6 +27,6 @@
      "grunt-express": "~1.0.0-beta2",
      "grunt-env": "0.4.0",
      "request-json": "*",
-     "mongoose": "*"
+     "mongoose": "~3.8.x"
  }
 }
