@@ -5,7 +5,9 @@ userControler = require './controlers/userControler'
 
 app = express()
 
-mongoose.connect 'mongodb://localhost/mapTag'
+mongodbURL = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mapTag'
+
+mongoose.connect mongodbURL
 
 app.configure ->
   app.use express.compress()
