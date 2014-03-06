@@ -14,6 +14,14 @@ initialize = (latitude, longitude) ->
 		google.maps.event.addListener marker, 'click', ->
 			infowindow.open map, marker
 
+  google.maps.event.addListener map, 'rightclick', (event) ->
+    marker1 = new google.maps.Marker
+      position: event.latLng
+      map: map
+    newInfoWindow = _.clone infowindow
+    google.maps.event.addListener marker1, 'click', ->
+      newInfoWindow.open map, marker1
+
 getLocation = ->
 	if navigator.geolocation
 		navigator.geolocation.getCurrentPosition showPosition

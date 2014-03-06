@@ -6,16 +6,18 @@ html
     link(href='styles/bootstrap-theme.min.css', rel='stylesheet', type='text/css')
     link(href='styles/bootstrap.min.css', rel='stylesheet', type='text/css')
     link(href='styles/main.css', rel='stylesheet', type='text/css')
+    script(src='lib/underscore-min.js')
     script(src='lib/angular.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false")
   body
     nav.navbar.navbar-default(role="navigation")
       h2.header Let's Tag
-    section
+    section.main_map.center-inline
         .row
             .box
               #map-canvas
-        a.btn check in
+        .btn-group.check_in_btns
+            a.btn.btn-default check in
     script(src='lib/jquery-1.11.0.min.js')
     script(src='js/templates.js')
     script(src='js/main.js')
